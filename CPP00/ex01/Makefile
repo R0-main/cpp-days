@@ -10,7 +10,8 @@ RM					=	rm -rf
 RESET				=	\033[0m
 GREEN				=	\033[1;32m
 
-SRCS				=	Contact.cpp\
+SRCS				=	main.cpp\
+						Contact.cpp\
 						PhoneBook.cpp
 
 OBJS				=	$(SRCS:.cpp=.o)
