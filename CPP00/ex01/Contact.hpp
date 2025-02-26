@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 14:53:35 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:47:49 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class Contact
 	Contact(void);
 	~Contact();
 
-	void display_inline(int index);
 	void display(void);
-	static bool ask_property(std::string message, std::string *str);
+	void display_inline(int index);
+	static bool ask_property(std::string message, std::string *str, bool only_digits);
 
 	void set_darkest_secret(std::string str);
 	void set_phone_number(std::string str);

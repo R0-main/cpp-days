@@ -6,13 +6,15 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 15:21:57 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:53:28 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iomanip>
 #include <iostream>
+#include <limits>
+#include <string>
 #include <strings.h>
 
 #define NBLK "\x1B[0;30m"
@@ -59,22 +61,23 @@ void Contact::set_phone_number(std::string str)
 	this->phone_number = str;
 }
 
-bool Contact::ask_property(std::string message, std::string *str)
+bool Contact::ask_property(std::string message, std::string *str,
+	bool only_digits)
 {
 	if (!str)
 		return (false);
 	std::cout << BWHT "	Enter the " << message << " : " CREST;
 	std::getline(std::cin, *str);
-	if (std::cin.fail())
+	if (std::cin.fail() || (only_digits
+			&& !(*str).find_first_not_of("0123456789")))
 	{
-		std::cerr << NRED "Invalid input!" CREST << std::endl;
+		std::cerr << NRED "❌ Invalid input!" CREST << std::endl;
 		std::cin.clear();
-		std::cin.ignore();
 		return (false);
 	}
 	if (str->empty())
 	{
-		std::cerr << NRED "Field cannot be empty!" CREST << std::endl;
+		std::cerr << NRED "❌ Field cannot be empty!" CREST << std::endl;
 		return (false);
 	}
 	return (true);
@@ -97,9 +100,16 @@ void Contact::display_inline(int index)
 
 void Contact::display(void)
 {
-	std::cout << std::right << BWHT "	First Name : " CREST << this->firstname << std::endl;
-	std::cout << std::right << BWHT "	Last Name : " CREST << this->lastname << std::endl;
-	std::cout << std::right << BWHT "	Nick Name : " CREST << this->nickname << std::endl;
-	std::cout << std::right << BWHT "	Phone Number : " CREST << this->phone_number << std::endl;
-	std::cout << std::right << BWHT "	Darkest Secret : " CREST << this->darkest_secret << std::endl;
+	if (this->firstname.empty())
+	{
+		std::cout << BWHT "No informations about this contact!" CREST << std::endl;
+	}
+	else
+	{
+		std::cout << std::right << BWHT "	ℹ️  First Name : " CREST << this->firstname << std::endl;
+		std::cout << std::right << BWHT "	ℹ️  Last Name : " CREST << this->lastname << std::endl;
+		std::cout << std::right << BWHT "	ℹ️  Nick Name : " CREST << this->nickname << std::endl;
+		std::cout << std::right << BWHT "	📞 Phone Number : " CREST << this->phone_number << std::endl;
+		std::cout << std::right << BWHT "	🤫 Darkest Secret : " CREST << this->darkest_secret << std::endl;
+	}
 }

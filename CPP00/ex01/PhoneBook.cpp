@@ -6,18 +6,19 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:22:33 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 15:23:27 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:51:28 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iomanip>
 #include <iostream>
+#include <limits>
 
 #define NRED "\x1B[0;31m"
 #define CREST "\x1B[0m"
 
-#define RESET_RETURN(contact) {contact.reset(); return;}
+#define RESET_RETURN(contact) { contact.reset(); return; }
 
 PhoneBook::PhoneBook()
 {
@@ -36,16 +37,16 @@ void PhoneBook::add_contact(void)
 	if (this->_current_index >= MAX_CONTACTS)
 		this->_current_index = 0;
 	Contact &contact = this->_contacts[this->_current_index];
-	if (!Contact::ask_property("firstname", &contact.firstname))
+	if (!Contact::ask_property("firstname", &contact.firstname, false))
 		RESET_RETURN(contact)
-	if (!Contact::ask_property("lastname", &contact.lastname))
+	if (!Contact::ask_property("lastname", &contact.lastname, false))
 		RESET_RETURN(contact)
-	if (!Contact::ask_property("nickname", &contact.nickname))
+	if (!Contact::ask_property("nickname", &contact.nickname, false))
 		RESET_RETURN(contact)
-	if (!Contact::ask_property("phone_number", &tmp))
+	if (!Contact::ask_property("phone_number", &tmp, true))
 		RESET_RETURN(contact)
 	contact.set_phone_number(tmp);
-	if (!Contact::ask_property("darkest_secret", &tmp))
+	if (!Contact::ask_property("darkest_secret", &tmp, false))
 		RESET_RETURN(contact)
 	contact.set_darkest_secret(tmp);
 	this->_current_index++;
@@ -60,13 +61,12 @@ void PhoneBook::search_contact(void)
 	std::cin >> index;
 	if (std::cin.fail())
 	{
-		std::cerr << NRED "Invalid input!" CREST << std::endl;
+		std::cerr << NRED "❌ Invalid input!" CREST << std::endl;
 		std::cin.clear();
-		std::cin.ignore();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return ;
 	}
-	std::cin.clear();
-	std::cin.ignore();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	this->show_contact(index);
 }
 
