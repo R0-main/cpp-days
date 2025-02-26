@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:22:33 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 12:28:35 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:23:27 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 #include <iomanip>
 #include <iostream>
 
+#define NRED "\x1B[0;31m"
+#define CREST "\x1B[0m"
+
+#define RESET_RETURN(contact) {contact.reset(); return;}
+
 PhoneBook::PhoneBook()
 {
 	this->_stop = false;
+	this->_current_index = 0;
+	std::cout << "Available Commands : ADD, SEARCH, EXIT" << std::endl;
 }
 
 PhoneBook::~PhoneBook()
@@ -25,7 +32,23 @@ PhoneBook::~PhoneBook()
 
 void PhoneBook::add_contact(void)
 {
-	this->_contacts[0].firstname = "0123456789";
+	std::string tmp;
+	if (this->_current_index >= MAX_CONTACTS)
+		this->_current_index = 0;
+	Contact &contact = this->_contacts[this->_current_index];
+	if (!Contact::ask_property("firstname", &contact.firstname))
+		RESET_RETURN(contact)
+	if (!Contact::ask_property("lastname", &contact.lastname))
+		RESET_RETURN(contact)
+	if (!Contact::ask_property("nickname", &contact.nickname))
+		RESET_RETURN(contact)
+	if (!Contact::ask_property("phone_number", &tmp))
+		RESET_RETURN(contact)
+	contact.set_phone_number(tmp);
+	if (!Contact::ask_property("darkest_secret", &tmp))
+		RESET_RETURN(contact)
+	contact.set_darkest_secret(tmp);
+	this->_current_index++;
 }
 
 void PhoneBook::search_contact(void)
@@ -33,12 +56,17 @@ void PhoneBook::search_contact(void)
 	int	index;
 
 	this->show_contacts();
+	std::cout << "Index > ";
 	std::cin >> index;
 	if (std::cin.fail())
 	{
-		std::cout << "Invalid input!" << std::endl;
+		std::cerr << NRED "Invalid input!" CREST << std::endl;
+		std::cin.clear();
+		std::cin.ignore();
 		return ;
 	}
+	std::cin.clear();
+	std::cin.ignore();
 	this->show_contact(index);
 }
 
@@ -54,7 +82,7 @@ void PhoneBook::show_contact(int index)
 {
 	if (index < 0 || index >= MAX_CONTACTS)
 	{
-		std::cerr << "Please provide a valid index" << std::endl;
+		std::cerr << NRED "Please provide a valid index" CREST << std::endl;
 		return ;
 	}
 	this->_contacts[index].display();
@@ -66,9 +94,9 @@ void PhoneBook::process_line(void)
 		return ;
 	if (this->_line == "ADD")
 		this->add_contact();
-	if (this->_line == "SEARCH")
+	else if (this->_line == "SEARCH")
 		this->search_contact();
-	if (this->_line == "EXIT")
+	else if (this->_line == "EXIT")
 		this->_stop = true;
 }
 
@@ -76,6 +104,8 @@ void PhoneBook::loop(void)
 {
 	while (!this->_stop)
 	{
+		std::cin.clear();
+		std::cout << "> ";
 		std::getline(std::cin, this->_line);
 		if (std::cin.eof())
 			break ;
