@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/27 08:41:55 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:44:24 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool Contact::ask_property(std::string message, std::string *str,
 	return (true);
 }
 
-void Contact::display_inline(int index)
+void Contact::display_inline(int index) const
 {
 	if (this->firstname.empty())
 		std::cout << NBLK;
@@ -101,7 +101,7 @@ void Contact::display_inline(int index)
 	std::cout << CREST;
 }
 
-void Contact::display(void)
+void Contact::display(void) const
 {
 	if (this->firstname.empty())
 	{

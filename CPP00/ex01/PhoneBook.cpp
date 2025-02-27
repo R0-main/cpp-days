@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:22:33 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 15:56:28 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:45:08 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void PhoneBook::search_contact(void)
 	this->show_contact(index);
 }
 
-void PhoneBook::show_contacts(void)
+void PhoneBook::show_contacts(void) const
 {
 	for (size_t i = 0; i < MAX_CONTACTS; i++)
 	{
@@ -78,7 +78,7 @@ void PhoneBook::show_contacts(void)
 	}
 }
 
-void PhoneBook::show_contact(int index)
+void PhoneBook::show_contact(int index) const
 {
 	if (index < 0 || index >= MAX_CONTACTS)
 	{

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 14:53:46 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:45:00 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ class PhoneBook
 	~PhoneBook();
 
 	void loop(void);
-	void show_contacts(void);
-	void show_contact(int index);
+	void show_contacts(void) const;
+	void show_contact(int index) const;
 };
