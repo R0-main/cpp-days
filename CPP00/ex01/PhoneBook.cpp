@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:22:33 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/27 08:45:08 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:53:33 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define NRED "\x1B[0;31m"
 #define CREST "\x1B[0m"
 
-#define RESET_RETURN(contact) { contact.reset(); return; }
+#define RESET_RETURN(contact) { contact.reset(); return ; }
 
 PhoneBook::PhoneBook()
 {
@@ -31,7 +31,7 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void PhoneBook::add_contact(void)
+void PhoneBook::_add_contact(void)
 {
 	std::string tmp;
 	if (this->_current_index >= MAX_CONTACTS)
@@ -52,7 +52,7 @@ void PhoneBook::add_contact(void)
 	this->_current_index++;
 }
 
-void PhoneBook::search_contact(void)
+void PhoneBook::_search_contact(void)
 {
 	int	index;
 
@@ -88,14 +88,14 @@ void PhoneBook::show_contact(int index) const
 	this->_contacts[index].display();
 }
 
-void PhoneBook::process_line(void)
+void PhoneBook::_process_line(void)
 {
 	if (this->_line.empty())
 		return ;
 	if (this->_line == "ADD")
-		this->add_contact();
+		this->_add_contact();
 	else if (this->_line == "SEARCH")
-		this->search_contact();
+		this->_search_contact();
 	else if (this->_line == "EXIT")
 		this->_stop = true;
 }
@@ -108,6 +108,6 @@ void PhoneBook::loop(void)
 		std::getline(std::cin, this->_line);
 		if (std::cin.eof())
 			break ;
-		this->process_line();
+		this->_process_line();
 	}
 }

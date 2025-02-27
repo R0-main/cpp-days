@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/27 08:44:24 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:53:11 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Contact::~Contact()
 {
 }
 
-std::string Contact::truncate_string(std::string str)
+std::string Contact::_truncate_string(std::string str)
 {
 	{
 		if (str.length() > 10)
@@ -92,11 +92,11 @@ void Contact::display_inline(int index) const
 		std::cout << NBLK;
 	std::cout << std::right << std::setw(10) << index;
 	std::cout << "|";
-	std::cout << std::right << std::setw(10) << Contact::truncate_string(this->firstname);
+	std::cout << std::right << std::setw(10) << Contact::_truncate_string(this->firstname);
 	std::cout << "|";
-	std::cout << std::right << std::setw(10) << Contact::truncate_string(this->lastname);
+	std::cout << std::right << std::setw(10) << Contact::_truncate_string(this->lastname);
 	std::cout << "|";
-	std::cout << std::right << std::setw(10) << Contact::truncate_string(this->nickname);
+	std::cout << std::right << std::setw(10) << Contact::_truncate_string(this->nickname);
 	std::cout << std::endl;
 	std::cout << CREST;
 }
