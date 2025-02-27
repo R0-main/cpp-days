@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:22:33 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 15:51:28 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:56:28 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void PhoneBook::loop(void)
 {
 	while (!this->_stop)
 	{
-		std::cin.clear();
 		std::cout << "> ";
 		std::getline(std::cin, this->_line);
 		if (std::cin.eof())

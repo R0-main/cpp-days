@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/26 15:53:28 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/02/27 08:41:55 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ bool Contact::ask_property(std::string message, std::string *str,
 	if (std::cin.fail() || (only_digits
 			&& !(*str).find_first_not_of("0123456789")))
 	{
-		std::cerr << NRED "❌ Invalid input!" CREST << std::endl;
+		std::cerr << NRED "❌ Invalid input!" CREST;
+		if (only_digits)
+			std::cerr << NRED "(only digits are accepted for this field)" CREST;
+		std::cout << std::endl;
 		std::cin.clear();
 		return (false);
 	}
