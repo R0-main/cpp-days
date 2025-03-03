@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 12:40:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 13:45:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/03 13:26:11 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/03 13:46:09 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-int main(void)
+#include <iostream>
+
+class Zombie
 {
-	Zombie *heap_zombie;
+  private:
+	std::string _name;
 
-	heap_zombie = newZombie("Emerik");
-	heap_zombie->announce();
-	delete heap_zombie;
+  public:
+	Zombie(void);
+	~Zombie();
 
-	randomChump("Riad");
+	void setName(std::string name);
+	void announce(void);
+	std::string getName(void);
+};
 
-	return 0;
-}
-
-
+void	randomChump(std::string name);
+Zombie	*newZombie(std::string name);

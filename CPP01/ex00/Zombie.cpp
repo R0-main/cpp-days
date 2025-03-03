@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 12:40:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 13:45:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/03 13:31:35 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/03 13:46:09 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main(void)
+Zombie::Zombie(void)
 {
-	Zombie *heap_zombie;
-
-	heap_zombie = newZombie("Emerik");
-	heap_zombie->announce();
-	delete heap_zombie;
-
-	randomChump("Riad");
-
-	return 0;
 }
 
+Zombie::~Zombie()
+{
+}
 
+void Zombie::announce(void)
+{
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string name)
+{
+	this->_name = name;
+}
+
+std::string Zombie::getName(void)
+{
+	return (this->_name);
+}
