@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 08:50:08 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 12:35:18 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:37:51 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void Account::_displayTimestamp(void)
 
     std::time_t result = std::time(nullptr);
 	t = std::localtime(&result);
-	
+
     std::cout << "[" <<
-	std::setfill('0') << std::setw(2) << t->tm_year - 100 <<
+	std::setfill('0') << std::setw(2) << t->tm_year - 100 + 2000 <<
 	std::setfill('0') << std::setw(2) << t->tm_mon + 1 <<
 	std::setfill('0') << std::setw(2) << t->tm_mday <<
 	"_" <<
@@ -87,6 +87,8 @@ void Account::_displayTimestamp(void)
 	std::setfill('0') << std::setw(2) << t->tm_min <<
 	std::setfill('0') << std::setw(2) << t->tm_sec <<
 	"] ";
+
+	// std::cout << "[19920104_091532] ";
 }
 
 void Account::makeDeposit(int deposit)
