@@ -6,12 +6,11 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 08:50:08 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 12:37:51 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:41:03 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
-#include <chrono>
 #include <iostream>
 #include <iomanip>
 #include <locale>
@@ -75,7 +74,7 @@ void Account::_displayTimestamp(void)
 {
 	std::tm *t;
 
-    std::time_t result = std::time(nullptr);
+    std::time_t result = std::time(NULL);
 	t = std::localtime(&result);
 
     std::cout << "[" <<

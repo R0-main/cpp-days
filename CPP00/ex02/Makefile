@@ -3,7 +3,7 @@ NAME				=	ex02
 CC					=	g++
 
 # -Wall -Werror -Wextra
-CFLAGS				=	-Wall -Werror -Wextra -std=c++11
+CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 RM					=	rm -rf
 
 # Colors
