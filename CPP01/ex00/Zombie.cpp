@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 13:31:35 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 13:46:09 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:05:50 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Zombie::~Zombie()
 {
 }
 
-void Zombie::announce(void)
+void Zombie::announce(void) const
 {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
@@ -30,7 +30,7 @@ void Zombie::setName(std::string name)
 	this->_name = name;
 }
 
-std::string Zombie::getName(void)
+std::string Zombie::getName(void) const
 {
 	return (this->_name);
 }
