@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 14:17:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/03 14:55:43 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:19:38 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 HumanB::HumanB(std::string name) : _name(name)
 {
+	this->_weapon = NULL;
 }
 
 HumanB::~HumanB()
