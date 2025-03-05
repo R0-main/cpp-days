@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/02/27 08:53:11 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:40:40 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ Contact::~Contact()
 
 std::string Contact::_truncate_string(std::string str)
 {
+	if (str.length() > 10)
 	{
-		if (str.length() > 10)
-		{
-			str = str.substr(0, 10);
-			str[9] = '.';
-		}
-		return (str);
+		str = str.substr(0, 10);
+		str[9] = '.';
 	}
+	return (str);
 }
 
 void Contact::reset(void)
