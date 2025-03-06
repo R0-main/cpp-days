@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:35:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/06 12:13:02 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:43:28 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,8 @@ Fixed::Fixed(const int num)
 
 Fixed::Fixed(const float num)
 {
-	float	whole;
-	float	decimal;
-
-	// int upper = (int)num;
-	whole = roundf(num);
-	decimal = num - whole;
-	std::cout << whole << "\n";
-	std::cout << decimal << "\n";
-	std::cout << "Float constructor called" << decimal << std::endl;
-	this->_base = roundf(num);
+	std::cout << "Float constructor called" << std::endl;
+	this->_base = num * (1 << Fixed::_fractional_bits) + (num >= 0 ? 0.5 : -0.5);
 }
 
 Fixed::Fixed(const Fixed &other)
@@ -63,7 +55,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 
 int Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_base);
 }
 
@@ -80,11 +72,7 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	int decimal = this->_base >> Fixed::_fractional_bits;
-	int fl = (this->_base << Fixed::_fractional_bits) >> Fixed::_fractional_bits;
-
-	float r = decimal + 0.1f * fl;
-	return (r);
+	return ((float)this->_base) / (1 << Fixed::_fractional_bits);
 }
 
 std::ostream &operator<<(std::ostream &stream, const Fixed &fixed)
