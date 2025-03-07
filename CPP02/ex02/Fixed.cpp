@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:35:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/06 15:47:10 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/07 08:52:10 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,34 +103,76 @@ Fixed Fixed::operator--(int)
 
 Fixed Fixed::operator+(const Fixed &other)
 {
-	Fixed added;
-	int n = this->_base + other.getRawBits();
+	Fixed	added;
+	int		n;
+
+	n = this->_base + other._base;
 	added.setRawBits(n);
 	return (added);
 }
 
 Fixed Fixed::operator-(const Fixed &other)
 {
-	Fixed subst;
-	int n = this->_base - other.getRawBits();
+	Fixed	subst;
+	int		n;
+
+	n = this->_base - other._base;
 	subst.setRawBits(n);
 	return (subst);
 }
 
 Fixed Fixed::operator*(const Fixed &other)
 {
-	Fixed multi;
-	int n = ((int64_t)this->_base * (int64_t)other.getRawBits()) >> Fixed::_fractional_bits;
+	Fixed	multi;
+	int		n;
+
+	n = ((int64_t)this->_base
+			* (int64_t)other._base) >> Fixed::_fractional_bits;
 	multi.setRawBits(n);
 	return (multi);
 }
 
 Fixed Fixed::operator/(const Fixed &other)
 {
-	Fixed divid;
-	int n = ((int64_t)this->_base << Fixed::_fractional_bits) / (int64_t)other.getRawBits();
+	Fixed	divid;
+	int		n;
+
+	if (this->_base == 0 || other._base == 0)
+		return (*this);
+	n = ((int64_t)this->_base << Fixed::_fractional_bits)
+		/ (int64_t)other._base;
 	divid.setRawBits(n);
 	return (divid);
+}
+
+bool Fixed::operator>(const Fixed &other)
+{
+	return (this->_base > other._base ? true : false);
+}
+
+bool Fixed::operator<(const Fixed &other)
+{
+	return (this->_base < other._base ? true : false);
+}
+
+bool Fixed::operator>=(const Fixed &other)
+{
+	return (this->_base >= other._base ? true : false);
+}
+
+bool Fixed::operator<=(const Fixed &other)
+{
+	return (this->_base <= other._base ? true : false);
+}
+
+bool Fixed::operator==(const Fixed &other)
+{
+	return (this->_base == other._base ? true : false);
+}
+
+bool Fixed::operator!=(const Fixed &other)
+{
+	return (this->_base != other._base ? true : false);
 }
 
 Fixed &Fixed::min(Fixed &f1, Fixed &f2)
