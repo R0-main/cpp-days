@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 09:35:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/07 08:52:10 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:00:23 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,32 +147,32 @@ Fixed Fixed::operator/(const Fixed &other)
 
 bool Fixed::operator>(const Fixed &other)
 {
-	return (this->_base > other._base ? true : false);
+	return (this->_base > other._base);
 }
 
 bool Fixed::operator<(const Fixed &other)
 {
-	return (this->_base < other._base ? true : false);
+	return (this->_base < other._base);
 }
 
 bool Fixed::operator>=(const Fixed &other)
 {
-	return (this->_base >= other._base ? true : false);
+	return (this->_base >= other._base);
 }
 
 bool Fixed::operator<=(const Fixed &other)
 {
-	return (this->_base <= other._base ? true : false);
+	return (this->_base <= other._base);
 }
 
 bool Fixed::operator==(const Fixed &other)
 {
-	return (this->_base == other._base ? true : false);
+	return (this->_base == other._base);
 }
 
 bool Fixed::operator!=(const Fixed &other)
 {
-	return (this->_base != other._base ? true : false);
+	return (this->_base != other._base);
 }
 
 Fixed &Fixed::min(Fixed &f1, Fixed &f2)
