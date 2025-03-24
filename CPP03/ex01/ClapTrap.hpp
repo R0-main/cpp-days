@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:55:59 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/10 12:14:19 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:11:56 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ClapTrap
 	virtual void _say(std::string str) const;
 
   public:
+	ClapTrap(void);
 	ClapTrap(std::string name);
 	ClapTrap(ClapTrap &other);
 	ClapTrap &operator=(ClapTrap &other);

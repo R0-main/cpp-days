@@ -6,11 +6,20 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:55:41 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/10 11:33:34 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:15:38 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+{
+	this->_attack_damage = 0;
+	this->_energy_points = 0;
+	this->_hit_points = 0;
+	this->_name = "Robot";
+	this->_say("created with nothing!");
+}
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10),
 	_energy_points(10), _attack_damage(0)

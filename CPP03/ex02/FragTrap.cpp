@@ -1,52 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:34:29 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/24 10:30:15 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:24:45 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+FragTrap::FragTrap(void) : ClapTrap()
 {
-}
-
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
-{
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
 	this->_say("just been created!");
 }
 
-ScavTrap::~ScavTrap()
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
+{
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30;
+	this->_say("just been created!");
+}
+
+FragTrap::~FragTrap()
 {
 	this->_say("just been destroyed!");
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap &other)
+FragTrap &FragTrap::operator=(FragTrap &other)
 {
 	if (this != &other)
 		this->ClapTrap::operator=(other);
 	return (*this);
 }
 
-void ScavTrap::_say() const
+void FragTrap::_say() const
 {
-	std::cout << "ScavTrap " << this->_name << " ";
+	std::cout << "FragTrap " << this->_name << " ";
 }
 
-void ScavTrap::_say(std::string str) const
+void FragTrap::_say(std::string str) const
 {
-	std::cout << "ScavTrap " << this->_name << " " << str << std::endl;
+	std::cout << "FragTrap " << this->_name << " " << str << std::endl;
 }
 
-void ScavTrap::guardGate(void)
+void FragTrap::highFivesGuys(void)
 {
-	this->_say("is now in Gate keeper mode");
+	this->_say("FragTrap high five someone!");
 }
+
