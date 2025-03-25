@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:34:29 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/25 10:14:52 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:15:00 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	this->_hit_points = 100;
+	if (this->_hit_points == 0)
+		this->_hit_points = 100;
 	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	if (this->_attack_damage == 0)
+		this->_attack_damage = 20;
 	this->_say("just been created!");
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	this->_hit_points = 100;
+	if (this->_hit_points == 0)
+		this->_hit_points = 100;
 	this->_energy_points = 50;
-	this->_attack_damage = 20;
-	this->_say("just been created!");
+	if (this->_attack_damage == 0)
+		this->_attack_damage = 20;
 }
 
 ScavTrap::~ScavTrap()

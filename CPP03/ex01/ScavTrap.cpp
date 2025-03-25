@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:34:29 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/24 10:30:15 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:56:07 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	this->_say("just been created!");
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)

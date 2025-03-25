@@ -1,56 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:34:29 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/25 10:14:52 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:24:45 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
+#include <iomanip>
 
-ScavTrap::ScavTrap() : ClapTrap()
+DiamondTrap::DiamondTrap(void) : FragTrap(), ScavTrap()
 {
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
 	this->_say("just been created!");
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap"), FragTrap(name), ScavTrap(name)
 {
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	this->_name = name;
 	this->_say("just been created!");
 }
 
-ScavTrap::~ScavTrap()
+DiamondTrap::~DiamondTrap()
 {
 	this->_say("just been destroyed!");
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap &other)
+DiamondTrap &DiamondTrap::operator=(DiamondTrap &other)
 {
 	if (this != &other)
 		this->ClapTrap::operator=(other);
 	return (*this);
 }
 
-void ScavTrap::_say() const
+void DiamondTrap::_say() const
 {
-	std::cout << "ScavTrap " << this->_name << " ";
+	std::cout << "DiamondTrap " << this->_name << " ";
 }
 
-void ScavTrap::_say(std::string str) const
+void DiamondTrap::_say(std::string str) const
 {
-	std::cout << "ScavTrap " << this->_name << " " << str << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " " << str << std::endl;
 }
 
-void ScavTrap::guardGate(void)
+void DiamondTrap::whoAmI(void) const
 {
-	this->_say("is now in Gate keeper mode");
+	std::cout << "DiamondTrap : " << this->_name << std::endl;
+	std::cout << "ClapTrap : " << this->ClapTrap::_name << std::endl;
+}
+
+void DiamondTrap::attack(const std::string &target)
+{
+	this->ScavTrap::attack(target);
 }
