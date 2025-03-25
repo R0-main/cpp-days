@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 08:34:49 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/04 10:44:02 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:37:20 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void Sed::_process(void)
 	std::ofstream out_file_stream(this->_output_path.c_str());
 	if (!out_file_stream.good())
 		throw std::invalid_argument("Out file not valid!");
-	while (in_file_stream >> line)
+	while (std::getline(in_file_stream, line))
 	{
 		if (in_file_stream.fail())
 			throw std::runtime_error("In file failed during execution!");
 		out_file_stream << this->_replace_word(line);
 		if (out_file_stream.fail())
-			throw (std::runtime_error("Out file failed during execution!"));
+			throw(std::runtime_error("Out file failed during execution!"));
 	}
 	out_file_stream << std::endl;
 }
@@ -81,13 +81,14 @@ std::string Sed::_replace_word(std::string str) const
 	std::size_t i;
 
 	if (str.find(this->_target, 0) != str.npos)
-		while (str.find(this->_target, 0) != str.npos)
+		while (str.find(this->_target, 0) != str.npos && !str.empty())
 		{
-			i = str.find(this->_target, 0) + 1;
-			result += str.substr(0, i - 1);
+			i = str.find(this->_target, 0);
+			result += str.substr(0, i);
 			result += this->_replacment;
-			str = str.substr(i, str.length());
+			str = str.substr(i + this->_target.length(), str.length());
 		}
 	result += str;
+	result += '\n';
 	return (result);
 }
