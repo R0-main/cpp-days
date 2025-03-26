@@ -67,7 +67,6 @@ void Sed::_process(void)
 		if (out_file_stream.fail())
 			throw(std::runtime_error("Out file failed during execution!"));
 	}
-	out_file_stream << std::endl;
 }
 
 bool Sed::fail(void) const

@@ -15,6 +15,13 @@
 #include <iostream>
 #include <string>
 
+Harl::t_str_to_function Harl::_mapping[] = {
+	{"DEBUG", Harl::DEBUG},
+	{"INFO", Harl::INFO},
+	{"WARNING", Harl::WARNING},
+	{"ERROR", Harl::ERROR},
+};
+
 void Harl::debug(void)
 {
 	if (this->_level.compare("DEBUG") != 0)
@@ -87,20 +94,11 @@ Harl::E_Types Harl::getFilterType(void) const
 
 void Harl::setFilterType(char *str)
 {
-	if (std::string("NONE").compare(str) == 0)
-		this->_filter = Harl::NONE;
-	else if (std::string("ALL").compare(str) == 0)
-		this->_filter = Harl::ALL;
-	else if (std::string("DEBUG").compare(str) == 0)
-		this->_filter = Harl::DEBUG;
-	else if (std::string("INFO").compare(str) == 0)
-		this->_filter = Harl::INFO;
-	else if (std::string("WARNING").compare(str) == 0)
-		this->_filter = Harl::WARNING;
-	else if (std::string("ERROR").compare(str) == 0)
-		this->_filter = Harl::ERROR;
-	else
-		this->_filter = Harl::UNDIFINED;
+	for (int i = 0; i < 4; i++)
+	{
+		if (std::string(this->_mapping[i].str).compare(str) == 0)
+			this->_filter = this->_mapping[i].type;
+	}
 }
 
 Harl::Harl(void)

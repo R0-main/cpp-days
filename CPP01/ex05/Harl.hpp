@@ -17,6 +17,14 @@
 class Harl
 {
   private:
+
+	typedef struct {
+		const char *str;
+		void (Harl::*func)(void);
+	}	t_str_to_function;
+
+	static t_str_to_function _mapping[];
+
 	void debug(void);
 	void info(void);
 	void warning(void);

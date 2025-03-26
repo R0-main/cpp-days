@@ -13,6 +13,13 @@
 #include "Harl.hpp"
 #include <iostream>
 
+Harl::t_str_to_function Harl::_mapping[] = {
+	{"DEBUG", &Harl::debug},
+	{"INFO", &Harl::info},
+	{"WARNING", &Harl::warning},
+	{"ERROR", &Harl::error},
+};
+
 void Harl::debug(void)
 {
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
@@ -35,14 +42,11 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-	if (level == "DEBUG")
-		this->debug();
-	else if (level == "INFO")
-		this->info();
-	else if (level == "WARNING")
-		this->warning();
-	else if (level == "ERROR")
-		this->error();
+	for (int i = 0; i < 4; i++)
+	{
+		if (std::string(this->_mapping[i].str).compare(level) == 0)
+			(this->*_mapping[i].func)();
+	}
 }
 
 Harl::Harl(void)

@@ -35,6 +35,14 @@ class Harl
 	Harl::E_Types getFilterType(void) const;
 
   private:
+
+  typedef struct {
+	const char *str;
+	Harl::E_Types type;
+	}	t_str_to_function;
+
+	static t_str_to_function _mapping[];
+
 	E_Types	_filter;
 	std::string _level;
 
