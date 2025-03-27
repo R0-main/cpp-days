@@ -12,9 +12,9 @@
 
 #pragma once
 
-#include <iostream>
 #include "AMateria.hpp"
 #include "Character.hpp"
+#include <iostream>
 
 class Cure : public AMateria
 {
@@ -24,7 +24,7 @@ class Cure : public AMateria
   public:
 	Cure(void);
 	Cure(const Cure &materia);
-	Cure &Cure::operator=(const Cure &other);
+	Cure &operator=(const Cure &other);
 	~Cure();
 
 	Cure *clone() const;

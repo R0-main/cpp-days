@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:53:51 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/27 13:02:47 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:36:11 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 MateriaSource::MateriaSource(void)
 {
+	for (size_t i = 0; i < MateriaSource::_MAX_MATERIAS; i++)
+	{
+		this->_materias[i] = NULL;
+	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)
@@ -23,6 +27,11 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 
 MateriaSource::~MateriaSource()
 {
+	for (size_t i = 0; i < MateriaSource::_MAX_MATERIAS; i++)
+	{
+		if (this->_materias[i])
+			delete this->_materias[i];
+	}
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &other)
@@ -36,5 +45,22 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 
 void MateriaSource::learnMateria(AMateria *materia)
 {
+	for (size_t i = 0; i < MateriaSource::_MAX_MATERIAS; i++)
+	{
+		if (!this->_materias[i])
+		{
+			this->_materias[i] = materia;
+			break ;
+		}
+	}
 }
-AMateria	*createMateria(std::string const &type);
+
+AMateria *MateriaSource::createMateria(std::string const &type)
+{
+	for (size_t i = 0; i < MateriaSource::_MAX_MATERIAS; i++)
+	{
+		if (this->_materias[i]->getType() == type)
+			return (this->_materias[i]);
+	}
+	return (0);
+}

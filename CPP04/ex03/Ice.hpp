@@ -12,9 +12,9 @@
 
 #pragma once
 
-#include <iostream>
 #include "AMateria.hpp"
 #include "Character.hpp"
+#include <iostream>
 
 class Ice : public AMateria
 {
@@ -24,7 +24,7 @@ class Ice : public AMateria
   public:
 	Ice(void);
 	Ice(const Ice &materia);
-	Ice &Ice::operator=(const Ice &other);
+	Ice &operator=(const Ice &other);
 	~Ice();
 
 	Ice *clone() const;

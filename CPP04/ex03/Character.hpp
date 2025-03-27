@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:27:08 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/27 12:33:50 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:39:47 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Character : public ICharacter
 	static const unsigned int _INVENTORY_SIZE = 4;
 
 	std::string _name;
-	AMateria	*_inventory[Character::_INVENTORY_SIZE];
+	AMateria *_inventory[Character::_INVENTORY_SIZE];
 
   public:
 	Character(std::string name);
