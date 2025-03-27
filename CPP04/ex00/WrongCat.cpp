@@ -35,3 +35,8 @@ WrongCat &WrongCat::operator=(const WrongCat &other)
 	this->type = other.type;
 	return (*this);
 }
+
+void WrongCat::makeSound(void) const
+{
+	std::cout << "[🐱] wouaf wouaf" << std::endl;
+}
