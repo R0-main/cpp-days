@@ -11,10 +11,12 @@ RESET				=	\033[0m
 GREEN				=	\033[1;32m
 
 SRCS				=	main.cpp\
-						AAnimal.cpp\
-						Dog.cpp\
-						Cat.cpp\
-						Brain.cpp
+						AMateria.cpp\
+						Ice.cpp\
+						Cure.cpp\
+						ICharacter.cpp\
+						Character.cpp\
+						MateriaSource.cpp
 
 OBJS				=	$(SRCS:.cpp=.o)
 
