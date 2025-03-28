@@ -1,5 +1,5 @@
 # Main
-NAME				=	ex02
+NAME				=	ex03
 CC					=	clang++
 
 # -Wall -Werror -Wextra

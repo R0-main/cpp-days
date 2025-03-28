@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 09:41:54 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/27 13:15:12 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/28 08:55:28 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,18 @@ int	main(void)
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	tmp = src->createMateria("fwqfqffqfqf");
+	me->equip(tmp);
 
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+
+	me->unequip(0);
+	me->equip(tmp);
+	me->unequip(0);
+	me->equip(tmp);
+	me->use(0, *bob);
 
 	delete bob;
 	delete me;

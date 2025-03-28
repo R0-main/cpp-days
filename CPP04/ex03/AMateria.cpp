@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:35:40 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/27 13:39:53 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/28 08:40:23 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ AMateria::~AMateria()
 
 AMateria &AMateria::operator=(const AMateria &other)
 {
-	this->_type = other._type;
+	(void)other;
 	return (*this);
 }
 
