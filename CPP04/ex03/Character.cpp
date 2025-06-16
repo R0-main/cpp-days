@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:23:53 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/03/28 08:55:55 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:37:19 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void Character::equip(AMateria *m)
 		return ;
 	for (size_t i = 0; i < Character::_INVENTORY_SIZE; i++)
 	{
+		if (this->_inventory[i] == m)
+			return ;
+	}
+	for (size_t i = 0; i < Character::_INVENTORY_SIZE; i++)
+	{
 		if (!this->_inventory[i])
 		{
 			this->_inventory[i] = m; // .clone() if we want to not delete the base material, however if we do ths we have to free it in the main
@@ -67,7 +72,7 @@ void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3 || !this->_inventory[idx])
 		return ;
-	delete this->_inventory[idx];
+	// delete this->_inventory[idx];
 	this->_inventory[idx] = NULL;
 }
 

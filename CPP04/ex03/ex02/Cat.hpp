@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:29:39 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:58:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/27 09:47:52 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/27 11:15:02 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
+#pragma once
 
-#define EXIT_SUCCESS 0
+#include "AAnimal.hpp"
 
-int	main(void)
+class Cat : public AAnimal
 {
-	PhoneBook book;
+  public:
+	Cat(void);
+	Cat(const Cat &other);
+	~Cat();
+	Cat &operator=(const Cat &other);
 
-	book.loop();
-	return (EXIT_SUCCESS);
-}
+	void makeSound(void) const;
+};

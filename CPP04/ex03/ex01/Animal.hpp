@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:29:39 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:58:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/27 09:35:41 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/27 10:59:37 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+#include "Brain.hpp"
 #include <iostream>
-#include "PhoneBook.hpp"
 
-#define EXIT_SUCCESS 0
-
-int	main(void)
+class Animal
 {
-	PhoneBook book;
+  protected:
+	std::string type;
+	Brain *brain;
 
-	book.loop();
-	return (EXIT_SUCCESS);
-}
+  public:
+	Animal(void);
+	Animal(const Animal &other);
+	virtual ~Animal();
+	Animal &operator=(const Animal &other);
+	Animal &operator=(const Animal *other);
+
+	virtual void makeSound(void) const;
+	std::string getType(void) const;
+};

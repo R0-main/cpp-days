@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:29:39 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:58:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/27 09:47:52 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/27 09:58:31 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
+#pragma once
 
-#define EXIT_SUCCESS 0
+#include "WrongAnimal.hpp"
 
-int	main(void)
+class WrongCat : public WrongAnimal
 {
-	PhoneBook book;
+  public:
+	WrongCat(void);
+	WrongCat(const WrongCat &other);
+	~WrongCat();
+	WrongCat &operator=(const WrongCat &other);
 
-	book.loop();
-	return (EXIT_SUCCESS);
-}
+	void makeSound(void) const;
+};

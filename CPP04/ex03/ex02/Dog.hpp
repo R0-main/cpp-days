@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:29:39 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:58:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/27 09:47:52 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/27 11:15:07 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
+#pragma once
 
-#define EXIT_SUCCESS 0
+#include "AAnimal.hpp"
 
-int	main(void)
+class Dog : public AAnimal
 {
-	PhoneBook book;
+  public:
+	Dog(void);
+	Dog(const Dog &other);
+	~Dog();
+	Dog &operator=(const Dog &other);
 
-	book.loop();
-	return (EXIT_SUCCESS);
-}
+	void makeSound(void) const;
+};

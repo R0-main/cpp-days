@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:29:39 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:58:17 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/03/27 09:35:41 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/03/27 09:56:11 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include <iostream>
-#include "PhoneBook.hpp"
 
-#define EXIT_SUCCESS 0
-
-int	main(void)
+class WrongAnimal
 {
-	PhoneBook book;
+  protected:
+	std::string type;
 
-	book.loop();
-	return (EXIT_SUCCESS);
-}
+  public:
+	WrongAnimal(void);
+	WrongAnimal(const WrongAnimal &other);
+	virtual ~WrongAnimal();
+	WrongAnimal &operator=(const WrongAnimal &other);
+
+	virtual void makeSound(void) const;
+	std::string getType(void) const;
+};
