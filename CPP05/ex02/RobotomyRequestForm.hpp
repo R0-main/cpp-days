@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 09:01:17 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 10:45:36 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:13:20 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 class RobotomyRequestForm : public AForm
 {
-  private:
-	std::string target;
 
   public:
 	RobotomyRequestForm(RobotomyRequestForm &other);

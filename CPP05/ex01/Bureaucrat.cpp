@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 08:56:50 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 09:56:45 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 08:53:05 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ Bureaucrat::Bureaucrat(std::string name, unsigned char grade) : name(name)
 Bureaucrat::~Bureaucrat(void) throw()
 {
 	std::cout << "test\n";
+}
+
+void Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->name << " signed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << this->name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 void Bureaucrat::incrementGrade(void)
@@ -55,7 +68,7 @@ const Bureaucrat &Bureaucrat::operator=(const Bureaucrat &b)
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
-	return out;
+	return (out);
 }
 
 std::string Bureaucrat::getName(void) const throw()

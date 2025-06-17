@@ -17,7 +17,7 @@
 #include <fstream>
 
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other) : AForm("PresidentialPardonForm", 25, 5), target(other.target)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other) : AForm("PresidentialPardonForm", 25, 5)
 {
 	*this = other;
 }
@@ -28,8 +28,9 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 	return (*this);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("PresidentialPardonForm", 25, 5), target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string &target) : AForm("PresidentialPardonForm", 25, 5)
 {
+	this->target = target;
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const

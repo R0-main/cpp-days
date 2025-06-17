@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 09:01:55 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 11:03:14 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:19:46 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <fstream>
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other) : AForm("ShrubberyCreationForm", 145, 137), target(other.target)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other) : AForm("ShrubberyCreationForm", 145, 137)
 {
 	*this = other;
 }
@@ -28,8 +28,9 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &o
 	return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : AForm("ShrubberyCreationForm", 145, 137)
 {
+	this->target = target;
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const

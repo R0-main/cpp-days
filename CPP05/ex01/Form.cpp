@@ -6,21 +6,21 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:33:25 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 14:08:45 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:25:42 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "Form.hpp"
+#include <sstream>
+#include <string>
 
-Form::Form(const Form &b)
+Form::Form(const Form &b) : name(b.name), is_signed(b.is_signed),
+	min_grade_sign(b.min_grade_sign), min_grade_execute(b.min_grade_execute)
 {
-	*this = b;
 }
 
 Form::Form(std::string name, unsigned char min_grade_sign,
-	unsigned char min_grade_execute) : name(name),
+	unsigned char min_grade_execute) : name(name), is_signed(false),
 	min_grade_sign(min_grade_sign), min_grade_execute(min_grade_execute)
 {
 	if (min_grade_sign < LOWEST_GRADE)
@@ -33,6 +33,13 @@ Form::Form(std::string name, unsigned char min_grade_sign,
 		throw Form::GradeTooHighException();
 }
 
+std::string Form::_toString(int d) const throw()
+{
+	std::ostringstream oss;
+	oss << d;
+	return (oss.str());
+}
+
 const std::string Form::getFormData(void) const throw()
 {
 	std::string str;
@@ -42,17 +49,18 @@ const std::string Form::getFormData(void) const throw()
 	str.append(this->is_signed ? "true" : "false");
 	str.append(", ");
 	str.append("min_grade_sign : ");
-	str.append(std::to_string(this->min_grade_sign));
+	str.append(this->_toString(this->min_grade_sign));
 	str.append(", ");
 	str.append("min_grade_execute : ");
-	str.append(std::to_string(this->min_grade_execute));
+	str.append(this->_toString(this->min_grade_execute));
 	return (str);
 }
 
-void Form::beSigned(Bureaucrat &b)
+void Form::beSigned(Bureaucrat b)
 {
 	if (b.getGrade() > this->min_grade_sign)
 		throw Form::GradeTooLowException();
+	this->is_signed = true;
 }
 
 Form::~Form(void) throw()
@@ -75,13 +83,18 @@ std::ostream &operator<<(std::ostream &out, const Form &b)
 	return (out);
 }
 
+std::string Form::getName() const throw()
+{
+	return (this->name);
+}
+
 Form::GradeTooLowException::GradeTooLowException(void) throw()
 {
 }
 
 const char *Form::GradeTooLowException::what(void) const throw()
 {
-	return ("GradeTooLowException: Form grade is too high. Grade must be between " STRING(LOWEST_GRADE) " (highest) and " STRING(HIGHEST_GRADE) " (lowest) in order to sign this document.");
+	return ("Form grade is too high");
 }
 
 Form::GradeTooHighException::GradeTooHighException(void) throw()
@@ -90,5 +103,5 @@ Form::GradeTooHighException::GradeTooHighException(void) throw()
 
 const char *Form::GradeTooHighException::what(void) const throw()
 {
-	return ("GradeTooLowException: Form grade is too low. Grade must be between " STRING(LOWEST_GRADE) " (highest) and " STRING(HIGHEST_GRADE) " (lowest) in order to sign this document.");
+	return ("Form grade is too low");
 }

@@ -6,17 +6,20 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 08:56:53 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 10:10:09 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 08:53:04 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include "Form.hpp"
 #include <iostream>
 
 #define STR(str) #str
 #define STRING(str) STR(str)
 #define HIGHEST_GRADE 150
 #define LOWEST_GRADE 1
+
+class	Form;
 
 class Bureaucrat
 {
@@ -33,25 +36,24 @@ class Bureaucrat
 	std::string getName(void) const throw();
 	unsigned int getGrade(void) const throw();
 
-	void	incrementGrade(void);
-	void	decrementGrade(void);
+	void incrementGrade(void);
+	void decrementGrade(void);
 
-
+	void signForm(Form &form) const;
 
 	class GradeTooHighException : public std::exception
 	{
-	public:
+		public:
 		GradeTooHighException(void) throw();
-		const char* what() const throw();
+		const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
-	public:
+		public:
 		GradeTooLowException(void) throw();
-		const char* what() const throw();
+		const char *what() const throw();
 	};
-
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

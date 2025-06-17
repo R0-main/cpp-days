@@ -6,51 +6,52 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:33:43 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/16 11:47:31 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:06:47 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
 #include "Bureaucrat.hpp"
+#include <iostream>
 
-#define STR(str) #str
-#define STRING(str) STR(str)
-#define HIGHEST_GRADE 150
-#define LOWEST_GRADE 1
+class	Bureaucrat;
 
 class Form
 {
   private:
 	const std::string name;
 	bool is_signed;
-	const unsigned int min_grade_sign;
-	const unsigned int min_grade_execute;
+	const unsigned char min_grade_sign;
+	const unsigned char min_grade_execute;
+
+	std::string _toString(int d) const throw();
 
   public:
 	Form(const Form &b);
-	Form(std::string name, unsigned char min_grade_sign, unsigned char min_grade_execute);
+	Form(std::string name, unsigned char min_grade_sign,
+		unsigned char min_grade_execute);
 	const Form &operator=(const Form &b);
 	~Form() throw();
 
-	void beSigned(Bureaucrat &b);
+	void beSigned(Bureaucrat b);
+
+	std::string getName() const throw();
 
 	const std::string getFormData(void) const throw();
 
 	class GradeTooHighException : public std::exception
 	{
-	public:
+		public:
 		GradeTooHighException(void) throw();
-		const char* what() const throw();
+		const char *what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
-	public:
+		public:
 		GradeTooLowException(void) throw();
-		const char* what() const throw();
+		const char *what() const throw();
 	};
-
 };
 
 std::ostream &operator<<(std::ostream &out, const Form &b);

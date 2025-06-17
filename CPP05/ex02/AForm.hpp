@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:33:43 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 09:39:08 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:17:30 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class AForm
 
 	std::string _toString(int d) const throw();
 
+  protected:
+	std::string target;
+
   public:
 	AForm(const AForm &b);
 	AForm(std::string name, unsigned char min_grade_sign,
@@ -39,7 +42,7 @@ class AForm
 
 	const std::string getFormData(void) const throw();
 
-	virtual void execute(Bureaucrat const & executor) const;
+	virtual void execute(Bureaucrat const &executor) const;
 
 	class GradeTooHighException : public std::exception
 	{

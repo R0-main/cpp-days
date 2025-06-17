@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:33:25 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 09:43:27 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:25:21 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include <string>
 
 AForm::AForm(const AForm &b) : name(b.name), is_signed(b.is_signed),
-	min_grade_sign(b.min_grade_sign), min_grade_execute(b.min_grade_execute)
+	min_grade_sign(b.min_grade_sign), min_grade_execute(b.min_grade_execute), target(b.target)
 {
 }
 
 AForm::AForm(std::string name, unsigned char min_grade_sign,
-	unsigned char min_grade_execute) : name(name),
-	min_grade_sign(min_grade_sign), min_grade_execute(min_grade_execute)
+	unsigned char min_grade_execute) : name(name), is_signed(false),
+	min_grade_sign(min_grade_sign), min_grade_execute(min_grade_execute), target("")
 {
 	if (min_grade_sign < LOWEST_GRADE)
 		throw AForm::GradeTooLowException();
@@ -43,6 +43,7 @@ std::string AForm::_toString(int d) const throw()
 const std::string AForm::getFormData(void) const throw()
 {
 	std::string str;
+	std::cout << this->name << std::endl;
 	str.append(this->name);
 	str.append(", ");
 	str.append("is_signed : ");
@@ -81,6 +82,7 @@ const AForm &AForm::operator=(const AForm &b)
 	*((unsigned char *)&this->min_grade_sign) = b.min_grade_sign;
 	*((unsigned char *)&this->min_grade_execute) = b.min_grade_execute;
 	*((std::string *)&this->name) = b.name;
+	this->target = b.target;
 	this->is_signed = b.is_signed;
 	return (*this);
 }

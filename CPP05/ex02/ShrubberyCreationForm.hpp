@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 09:01:17 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 10:04:52 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:13:25 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ _- -   | | _- _\n\
 
 class ShrubberyCreationForm : public AForm
 {
-  private:
-	std::string target;
 
   public:
 	ShrubberyCreationForm(ShrubberyCreationForm &other);

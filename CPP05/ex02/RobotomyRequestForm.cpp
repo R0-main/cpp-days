@@ -17,7 +17,7 @@
 #include <fstream>
 
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &other) : AForm("RobotomyRequestForm", 72, 45), target(other.target)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &other) : AForm("RobotomyRequestForm", 72, 45)
 {
 	*this = other;
 }
@@ -28,8 +28,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm &other)
 	return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string &target) : AForm("RobotomyRequestForm", 72, 45)
 {
+	this->target = target;
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
