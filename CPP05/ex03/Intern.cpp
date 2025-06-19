@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:34:31 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 12:16:44 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:04:22 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ AForm *Intern::makeForm(std::string name, std::string target) const
 	std::string format_str(name);
 
 	for (size_t i = 0; i < format_str.length(); i++)
-	{
 		format_str[i] = std::tolower(format_str[i]);
-	}
 	if (format_str.find("request", 0) == std::string::npos)
 		throw Intern::UnknownName();
 	if (format_str.find("robotomy", 0) != std::string::npos)
