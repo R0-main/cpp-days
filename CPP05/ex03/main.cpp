@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 09:00:06 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/17 12:16:17 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:03:00 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 	{
 		Intern someRandomIntern;
 		AForm *rrf;
-		rrf = someRandomIntern.makeForm("presidential request", "Bender");
+		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
 		std::cout << *rrf << std::endl;
 		delete rrf;
 	}
@@ -43,7 +43,7 @@ int	main(void)
 	{
 		Intern someRandomIntern;
 		AForm *rrf;
-		rrf = someRandomIntern.makeForm("Shrubbery request", "Bender");
+		rrf = someRandomIntern.makeForm("Shrubbery Creation", "Bender");
 		std::cout << *rrf << std::endl;
 		delete rrf;
 	}
