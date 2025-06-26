@@ -1,21 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serialization.cpp                                  :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 14:20:18 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/24 09:10:46 by rguigneb         ###   ########.fr       */
+/*   Created: 2025/06/26 09:03:01 by rguigneb          #+#    #+#             */
+/*   Updated: 2025/06/26 09:09:06 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serialization.hpp"
+#pragma once
+#include <cstdlib>
+#include <iostream>
 
-Serialization::Serialization()
+class Base
 {
-}
+  public:
+	virtual ~Base() = 0;
+};
 
-Serialization::~Serialization()
+class A : public Base
 {
-}
+  public:
+	A();
+	~A();
+};
+
+class B : public Base
+{
+  public:
+	B();
+	~B();
+};
+
+class C : public Base
+{
+  public:
+	C();
+	~C();
+};
+
+Base	*generate(void);
+void	identify(Base *p);
+void	identify(Base &p);

@@ -1,5 +1,5 @@
 # Main
-NAME				=	ex01
+NAME				=	ex02
 CC					=	c++
 
 # -Wall -Werror -Wextra
@@ -11,8 +11,7 @@ RESET				=	\033[0m
 GREEN				=	\033[1;32m
 
 SRCS				=	main.cpp\
-						Bureaucrat.cpp\
-						Form.cpp\
+						Base.cpp
 
 OBJS				=	$(SRCS:.cpp=.o)
 

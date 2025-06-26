@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:20:05 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/20 13:40:12 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:11:23 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@
 
 class Serialization
 {
-  private:
-	/* data */
   public:
-	Serialization(/* args */);
-
+	Serialization();
 	virtual ~Serialization() = 0;
 
 	template <typename Data> static uintptr_t serialize(Data *ptr)

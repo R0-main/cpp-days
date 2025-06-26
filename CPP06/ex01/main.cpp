@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:57:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/20 11:16:53 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:13:41 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int main(void)
 {
-	/* code */
 	int d = 10;
 	int *i = &d;
 
@@ -25,7 +24,6 @@ int main(void)
 
 	std::cout << Serialization::deserialize<int>(ptr) << "\n";
 	std::cout << *Serialization::deserialize<int>(ptr) << "\n";
-
 	return 0;
 }
 

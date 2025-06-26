@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 08:51:00 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/19 14:15:30 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/26 09:33:01 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,18 @@ void print_converted(std::string input, T value)
 	char c;
 	float f;
 	double d;
-	
+
 	c = static_cast<char>(value);
 	f = static_cast<float>(value);
 	d = static_cast<double>(value);
 
 	size_t max_fp = input.find('.');
 	if (max_fp != std::string::npos)
-		max_fp = input.substr(max_fp + 1, input.length()).length();
+		max_fp = input.substr(max_fp + 1, input.length() ).length();
 	else
 		max_fp = 1;
+	if (input.find('f') != std::string::npos)
+		max_fp -= 1;
 
 	if (input == "nan")
 	{
