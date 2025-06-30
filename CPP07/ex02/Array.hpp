@@ -6,56 +6,71 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 09:41:40 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/06/26 12:18:16 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/06/27 09:28:26 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <cstdlib>
 #include <strings.h>
 
 template <typename T> class Array
 {
   private:
-	T *data;
-	unsigned int size;
+	typedef unsigned int uint;
+
+	T *_data;
+	uint _size;
 
   public:
-	Array(){
-		this->data = 0;
-		this->size = 0;
+	Array() : _data(0), _size(0) {};
+
+	Array(uint n) : _size(n) {
+		this->_data = new(std::nothrow) T[n]();
+		if (this->_data == 0)
+		{
+			this->_size = 0;
+			return;
+		}
 	};
 
-	Array(unsigned int n){
-		this->size = n;
-		this->data = new T[n];
-		bzero(this->data, sizeof(T) * n);
-	};
-
-	Array(Array &array)
+	Array(Array &array) : _data(0), _size(0)
 	{
 		*this = array;
 	}
 
 	Array &operator=(Array &other)
 	{
-		delete[] this->data;
-		this->data = new T[other.size];
-		bzero(this->data, sizeof(T) * other.size);
-		for (size_t i = 0; i < other.size; i++)
-			this[i] = other[i];
-		this->size = other.size;
+		if (this->_data != 0)
+			delete[] this->_data;
+		this->_data = new(std::nothrow) T[other._size]();
+		if (this->_data == 0)
+		{
+			this->_size = 0;
+			return *this;
+		}
+		for (size_t i = 0; i < other._size; i++)
+			this->_data[i] = other._data[i];
+		this->_size = other._size;
+		return *this;
 	}
 
-	T &operator[](unsigned int index)
+	T &operator[](uint index) const
 	{
-		if (index >= this->size)
+		if (index >= this->_size || index < 0)
 			throw std::exception();
-		return this->data[index];
+		return this->_data[index];
 	}
 
-	~Array()
+	~Array() throw()
 	{
-		delete[] this->data;
+		if (this->_data)
+			delete[] this->_data;
+	}
+
+	uint size() const throw()
+	{
+		return (this->_size);
 	}
 };
