@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:45:48 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/01 14:43:00 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:59:47 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ RPN::RPN(const RPN &ref)
 RPN::RPN(const char *input) : _input(input)
 {
 	size_t	i;
+	char operation;
 
 	i = 0;
 	if (this->_is_valid_input() == false)
@@ -33,21 +34,40 @@ RPN::RPN(const char *input) : _input(input)
 	}
 	while (this->_input.empty() == false)
 	{
-		i = this->_input.find_first_of(NUMBERS OPERATIONS, i);
+		i = this->_input.find_first_of(NUMBERS OPERATIONS, 0);
 		if (i == std::string::npos)
 			break;
 		if (std::isdigit(this->_input[i]))
-			this->_numbers.push(this->_input[i]);
+			this->_numbers.push(this->_input[i] - '0');
 		else
-			this->_symbols.push(this->_input[i]);
+		{
+			if (this->_numbers.size() >= 2 )
+			{
+				operation = this->_input[i];
+
+				int second = this->_get_and_pop(this->_numbers);
+				int first = this->_get_and_pop(this->_numbers);
+
+				switch (operation)
+				{
+					case '+':
+						this->_numbers.push(first + second);
+						break;
+					case '-':
+						this->_numbers.push(first - second);
+						break;
+					case '*':
+						this->_numbers.push(first * second);
+						break;
+					case '/':
+						this->_numbers.push(first / second);
+						break;
+				}
+			}
+		}
 		this->_input = this->_input.substr(i + 1, this->_input.length());
 	}
-	if (this->_symbols.size() + 1 != this->_numbers.size())
-	{
-		std::cerr << "ERROR : Invalid Expression\n";
-		return ;
-	}
-	this->_execute();
+	std::cout << this->_numbers.top() << "\n";
 }
 
 const RPN &RPN::operator=(const RPN &other)
@@ -67,32 +87,32 @@ bool RPN::_is_valid_input() const throw()
 	return (this->_input.find_first_not_of(SUPPORTED_SYMBOLS) == std::string::npos);
 }
 
-long RPN::_execute() throw()
-{
-	long result = 0;
-	char operation;
+// long RPN::_execute() throw()
+// {
+// 	long result = 0;
+// 	char operation;
 
-	result += this->_get_and_pop(this->_numbers) - '0';
+// 	result += this->_get_and_pop(this->_numbers) - '0';
 
-	while (this->_numbers.empty() == false)
-	{
-		operation = this->_get_and_pop(this->_symbols);
-		switch (operation)
-		{
-			case '+':
-				result += this->_get_and_pop(this->_numbers) - '0';
-				break;
-			case '-':
-				result -= this->_get_and_pop(this->_numbers) - '0';
-				break;
-			case '*':
-				result *= this->_get_and_pop(this->_numbers) - '0';
-				break;
-			case '/':
-				result /= this->_get_and_pop(this->_numbers) - '0';
-				break;
-		}
-	}
-	std::cout << result << "\n";
-	return (result);
-}
+// 	while (this->_numbers.empty() == false)
+// 	{
+// 		operation = this->_get_and_pop(this->_symbols);
+// 		switch (operation)
+// 		{
+// 			case '+':
+// 				result += this->_get_and_pop(this->_numbers) - '0';
+// 				break;
+// 			case '-':
+// 				result -= this->_get_and_pop(this->_numbers) - '0';
+// 				break;
+// 			case '*':
+// 				result *= this->_get_and_pop(this->_numbers) - '0';
+// 				break;
+// 			case '/':
+// 				result /= this->_get_and_pop(this->_numbers) - '0';
+// 				break;
+// 		}
+// 	}
+// 	std::cout << result << "\n";
+// 	return (result);
+// }

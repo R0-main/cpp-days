@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:46:03 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/01 14:42:25 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:59:19 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 class RPN
 {
   private:
-	std::queue<unsigned char> _numbers;
+	std::stack<int> _numbers;
 	std::queue<char> _symbols;
 	std::string _input;
 
 	bool _is_valid_input() const throw();
 
 	template <typename T>
-	T _get_and_pop(std::queue<T> &queue)
+	T _get_and_pop(std::stack<T> &queue)
 	{
-		T tmp = queue.front();
+		T tmp = queue.top();
 		queue.pop();
 		return (tmp);
 	}
