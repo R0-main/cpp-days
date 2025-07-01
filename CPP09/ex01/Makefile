@@ -1,5 +1,5 @@
 # Main
-NAME				=	btc
+NAME				=	RPN
 CC					=	c++
 
 # -Wall -Werror -Wextra
@@ -11,7 +11,7 @@ RESET				=	\033[0m
 GREEN				=	\033[1;32m
 
 SRCS				=	main.cpp\
-						BitcoinExchange.cpp
+						RPN.cpp
 
 OBJS				=	$(SRCS:.cpp=.o)
 
