@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 14:23:31 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/03 11:56:06 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:56:03 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,8 @@ template <template <typename, typename> class D > class PmergeMe
 		{
 			this->_end = clock();
 
-			double duration = static_cast<double>(this->_end - this->_start)
-				/ CLOCKS_PER_SEC;
-			std::cout << "[" << this->_name << "] Time Taken " << std::fixed << std::setprecision(5) << duration << " us" << std::endl;
+			double duration = static_cast<double>(this->_end - this->_start) / CLOCKS_PER_SEC;
+			std::cout << "[" << this->_name << "] Time Taken " << std::fixed << std::setprecision(6) << duration << " sec" << std::endl;
 		}
 	};
 };

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:57:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/03 11:57:14 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:49:06 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	main(int ac, const char **av)
 
 	print_data(vec, "Begin");
 	{
-		PmergeMe<std::vector>::Timer timer("vector");
+		PmergeMe<std::vector>::Timer timer("std::vector");
 		PmergeMe<std::vector> pmerge(vec);
+		print_data(vec, "After");
 	}
 	{
-		PmergeMe<std::deque>::Timer timer("deque");
+		PmergeMe<std::deque>::Timer timer("std::deque");
 		PmergeMe<std::deque> pmerge(deq);
 	}
-	print_data(vec, "After");
 	return (0);
 }
