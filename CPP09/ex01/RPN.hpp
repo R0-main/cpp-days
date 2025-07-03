@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:46:03 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/02 11:12:36 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:46:12 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <queue>
 #include <stack>
+#include <list>
 
 #define NUMBERS "0123456789"
 #define SPACES " 	"
@@ -23,13 +24,13 @@
 class RPN
 {
   private:
-	std::stack<long, std::vector<long> > _numbers;
+	std::stack<long, std::list<long> > _numbers;
 	std::string _input;
 
 	bool _is_valid_input() const throw();
 
 	template <typename T>
-	T _get_and_pop(std::stack<T, std::vector<long> > &queue)
+	T _get_and_pop(std::stack<T, std::list<long> > &queue)
 	{
 		T tmp = queue.top();
 		queue.pop();

@@ -6,7 +6,7 @@
 /*   By: rguigneb <rguigneb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:57:15 by rguigneb          #+#    #+#             */
-/*   Updated: 2025/07/02 15:09:46 by rguigneb         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:57:14 by rguigneb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 #include "stdlib.h"
 #include <deque>
 #include <sstream>
+#include <vector>
 #include <cstdlib>
 #include <string>
 #include <limits.h>
+
 
 std::list<long> split(const std::string& input) {
     std::list<long> result;
@@ -38,15 +40,25 @@ std::list<long> split(const std::string& input) {
     return result;
 }
 
+template <typename D>
+void print_data(D container, const char *name)
+{
+	std::cout << name << ":	";
+	for (std::vector<long>::iterator i = container.begin(); i != container.end(); i++)
+		std::cout << *i << " ";
+	std::cout << "\n";
+}
+
 int	main(int ac, const char **av)
 {
-	std::list<long> ints;
+	std::vector<long> vec;
+	std::deque<long> deq;
+
 	if (ac <= 1)
 	{
 		std::cerr << "ERROR : Invalid Input\n";
 		return (1);
 	}
-
 	for (int i = 1; i < ac; i++)
 	{
 		long n = atol(av[i]);
@@ -55,15 +67,19 @@ int	main(int ac, const char **av)
 			std::cerr << "Error\n";
 			return (1);
 		}
-		ints.push_front(n);
+		vec.push_back(n);
+		deq.push_back(n);
 	}
 
-	for (std::list<long>::iterator i = ints.begin(); i != ints.end(); i++)
+	print_data(vec, "Begin");
 	{
-		std::cout << *i << "\n";
+		PmergeMe<std::vector>::Timer timer("vector");
+		PmergeMe<std::vector> pmerge(vec);
 	}
-
-	PmergeMe< std::deque<long> > pmerge(ints);
-
+	{
+		PmergeMe<std::deque>::Timer timer("deque");
+		PmergeMe<std::deque> pmerge(deq);
+	}
+	print_data(vec, "After");
 	return (0);
 }
